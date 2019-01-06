@@ -1,0 +1,8 @@
+".\Objects\stc15_timer.obj",
+".\Objects\stc15_exti.obj",
+".\Objects\stc15_delay.obj",
+".\Objects\stc15_gpio.obj",
+".\Objects\main.obj" 
+TO ".\Objects\FSST15_AutoProgramme" 
+
+PRINT(".\Listings\FSST15_AutoProgramme.map") REMOVEUNUSED 

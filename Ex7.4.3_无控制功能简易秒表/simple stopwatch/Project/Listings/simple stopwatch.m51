@@ -1,0 +1,300 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        08/08/2015  00:17:04  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\FsBSP_HC595.obj, .\Objects\FsBSP_Timer.obj, .\Objects\main.
+>> obj TO .\Objects\simple stopwatch PRINT (.\Listings\simple stopwatch.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\FsBSP_HC595.obj (FSBSP_HC595)
+  .\Objects\FsBSP_Timer.obj (FSBSP_TIMER)
+  .\Objects\main.obj (MAIN)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?UIDIV)
+
+
+LINK MAP OF MODULE:  .\Objects\simple stopwatch (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0024H     UNIT         ?DT?MAIN
+            DATA    002CH     0005H     UNIT         _DATA_GROUP_
+            IDATA   0031H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0008H     UNIT         ?PR?MAIN?MAIN
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     00AEH     UNIT         ?PR?STOPWATCHDISPLAY?FSBSP_TIMER
+            CODE    00BCH     008CH     UNIT         ?C_C51STARTUP
+            CODE    0148H     0055H     UNIT         ?C?LIB_CODE
+            CODE    019DH     0033H     UNIT         ?C_INITSEG
+            CODE    01D0H     002CH     UNIT         ?PR?STOPWATCHCOUNT?FSBSP_TIMER
+            CODE    01FCH     0022H     UNIT         ?PR?TIMER0_ISR?FSBSP_TIMER
+            CODE    021EH     0019H     UNIT         ?PR?_HC595_WRONEBYTE?FSBSP_HC595
+            CODE    0237H     000FH     UNIT         ?PR?TIMER0_INIT?FSBSP_TIMER
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\simple stopwatch (?C_STARTUP)
+
+
+SEGMENT                                    DATA_GROUP 
+  +--> CALLED SEGMENT                    START    LENGTH
+--------------------------------------------------------
+?C_C51STARTUP                            -----    -----
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN                            -----    -----
+  +--> ?PR?TIMER0_INIT?FSBSP_TIMER
+  +--> ?PR?STOPWATCHDISPLAY?FSBSP_TIMER
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/08/2015  00:17:04  PAGE 2
+
+
+?PR?STOPWATCHDISPLAY?FSBSP_TIMER         002CH    0005H
+  +--> ?PR?_HC595_WRONEBYTE?FSBSP_HC595
+
+*** NEW ROOT ***************************************************
+
+?PR?TIMER0_ISR?FSBSP_TIMER               -----    -----
+  +--> ?PR?STOPWATCHCOUNT?FSBSP_TIMER
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\simple stopwatch (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:00BCH         SEGMENT       ?C_C51STARTUP
+  I:0031H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:00BFH         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:00BCH         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:00BCH         LINE#         133
+  C:00BEH         LINE#         134
+  C:00BFH         LINE#         135
+  C:00C0H         LINE#         136
+  C:00C2H         LINE#         185
+  C:00C5H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        FSBSP_HC595
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  D:00C8H         PUBLIC        P5
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/08/2015  00:17:04  PAGE 3
+
+
+  D:00E8H         PUBLIC        P6
+  D:00F8H         PUBLIC        P7
+  D:00A8H         PUBLIC        IE
+  C:021EH         PUBLIC        _HC595_WrOneByte
+  D:00B8H         PUBLIC        IP
+  D:00D8H         PUBLIC        CCON
+  B:00C8H.0       PUBLIC        smgSER
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  B:00C8H.2       PUBLIC        RCK
+  B:00C8H.3       PUBLIC        SCK
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _HC595_WRONEBYTE
+  D:0007H         SYMBOL        ucDat
+  -------         DO            
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:021EH         LINE#         26
+  C:021EH         LINE#         27
+  C:021EH         LINE#         28
+  C:0220H         LINE#         30
+  C:0220H         LINE#         31
+  C:0220H         LINE#         32
+  C:0224H         LINE#         33
+  C:0226H         LINE#         34
+  C:022AH         LINE#         35
+  C:022CH         LINE#         36
+  C:0230H         LINE#         38
+  C:0232H         LINE#         39
+  C:0233H         LINE#         40
+  C:0234H         LINE#         41
+  C:0236H         LINE#         42
+  -------         ENDPROC       _HC595_WRONEBYTE
+  -------         ENDMOD        FSBSP_HC595
+
+  -------         MODULE        FSBSP_TIMER
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:01FCH         PUBLIC        Timer0_ISR
+  D:00C0H         PUBLIC        P4
+  D:00C8H         PUBLIC        P5
+  B:00A8H.7       PUBLIC        EA
+  D:00E8H         PUBLIC        P6
+  D:00F8H         PUBLIC        P7
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:000EH         PUBLIC        StopwatchDisplay
+  D:00D8H         PUBLIC        CCON
+  C:0237H         PUBLIC        Timer0_Init
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  B:00A8H.1       PUBLIC        ET0
+  D:008CH         PUBLIC        TH0
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/08/2015  00:17:04  PAGE 4
+
+
+  C:01D0H         PUBLIC        StopwatchCount
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          TIMER0_INIT
+  C:0237H         LINE#         27
+  C:0237H         LINE#         28
+  C:0237H         LINE#         29
+  C:023AH         LINE#         30
+  C:023DH         LINE#         31
+  C:023FH         LINE#         32
+  C:0241H         LINE#         33
+  C:0243H         LINE#         34
+  C:0245H         LINE#         35
+  -------         ENDPROC       TIMER0_INIT
+  -------         PROC          STOPWATCHCOUNT
+  C:01D0H         LINE#         43
+  C:01D0H         LINE#         44
+  C:01D0H         LINE#         45
+  C:01D8H         LINE#         46
+  C:01E1H         LINE#         47
+  C:01E1H         LINE#         48
+  C:01E6H         LINE#         49
+  C:01EEH         LINE#         50
+  C:01F6H         LINE#         51
+  C:01F6H         LINE#         52
+  C:01FBH         LINE#         53
+  C:01FBH         LINE#         54
+  C:01FBH         LINE#         55
+  -------         ENDPROC       STOPWATCHCOUNT
+  -------         PROC          STOPWATCHDISPLAY
+  -------         DO            
+  D:0007H         SYMBOL        x
+  D:002CH         SYMBOL        y
+  D:002DH         SYMBOL        buf
+  -------         ENDDO         
+  C:000EH         LINE#         62
+  C:000EH         LINE#         63
+  C:000EH         LINE#         68
+  C:0020H         LINE#         69
+  C:0032H         LINE#         71
+  C:003FH         LINE#         72
+  C:0053H         LINE#         73
+  C:0067H         LINE#         74
+  C:007BH         LINE#         77
+  C:007DH         LINE#         78
+  C:007DH         LINE#         79
+  C:008DH         LINE#         80
+  C:0096H         LINE#         83
+  C:0099H         LINE#         84
+  C:0099H         LINE#         85
+  C:00A1H         LINE#         86
+  C:00ABH         LINE#         87
+  C:00B0H         LINE#         89
+  C:00BBH         LINE#         90
+  -------         ENDPROC       STOPWATCHDISPLAY
+  -------         PROC          TIMER0_ISR
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/08/2015  00:17:04  PAGE 5
+
+
+  C:01FCH         LINE#         97
+  C:0200H         LINE#         99
+  C:0202H         LINE#         101
+  C:0205H         LINE#         102
+  C:0208H         LINE#         105
+  C:020AH         LINE#         107
+  C:0211H         LINE#         108
+  C:0211H         LINE#         109
+  C:0214H         LINE#         111
+  C:0217H         LINE#         113
+  C:0217H         LINE#         115
+  C:0219H         LINE#         117
+  -------         ENDPROC       TIMER0_ISR
+  -------         ENDMOD        FSBSP_TIMER
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  D:00C8H         PUBLIC        P5
+  D:00E8H         PUBLIC        P6
+  D:00F8H         PUBLIC        P7
+  D:0008H         PUBLIC        Disp_Tab
+  D:00A8H         PUBLIC        IE
+  D:0018H         PUBLIC        Bit_Tab
+  D:00B8H         PUBLIC        IP
+  D:0020H         PUBLIC        LedBuff
+  D:00D8H         PUBLIC        CCON
+  C:0003H         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:0026H         PUBLIC        uiCounter
+  D:0027H         PUBLIC        DecimalPart
+  D:0029H         PUBLIC        i
+  D:002AH         PUBLIC        IntegerPart
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  C:0003H         LINE#         43
+  C:0003H         LINE#         44
+  C:0003H         LINE#         46
+  C:0006H         LINE#         48
+  C:0006H         LINE#         49
+  C:0006H         LINE#         50
+  C:0009H         LINE#         51
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        ?C?UIDIV
+  C:0148H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+Program Size: data=50.0 xdata=0 code=582
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

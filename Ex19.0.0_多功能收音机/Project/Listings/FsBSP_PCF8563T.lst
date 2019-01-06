@@ -1,0 +1,56 @@
+C51 COMPILER V9.00   FSBSP_PCF8563T                                                        10/06/2015 08:34:46 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE FSBSP_PCF8563T
+OBJECT MODULE PLACED IN .\Objects\FsBSP_PCF8563T.obj
+COMPILER INVOKED BY: D:\PrjSW\Keil5\C51\BIN\C51.EXE ..\FsBSP\src\FsBSP_PCF8563T.c OMF2 OPTIMIZE(9,SPEED) BROWSE INCDIR(.
+                    -.\FsBSP\inc;..\FsBSP\src;..\STCLib\inc;..\STCLib\src;..\USER) DEBUG PRINT(.\Listings\FsBSP_PCF8563T.lst) OBJECT(.\Object
+                    -s\FsBSP_PCF8563T.obj)
+
+line level    source
+
+   1          /* ****************************** 作者：残弈悟恩 *****************************************
+   2           * 文件名称 ：FsBSP_PCF8563T.c
+   3           * 文件描述 ：PCF8563T时钟驱动源码
+   4           * 硬件平台 ：飛天三號 FSST15实验板
+   5           * 软件环境 ：Keil uVision5.13
+   6           * 
+   7           * 版本代号 ：V1.0                                              
+   8           * 修改日期 ：2015-09-16
+   9           * 技术论坛 ：电子工程师基地（http://www.ieebase.net）
+  10           * 淘宝店铺 ：http://fsmcu.taobao.com
+  11           * 例程说明 ：本例程为教材《与STC15单片机牵手的那些年》（清华大学出版社）配套例程
+  12                                    为视频《深入浅出玩转STC15单片机》配套例程（录制100讲--西安：愚公）
+  13                                    视频和书籍均被STC（深圳宏晶科技）官方大学计划和高校高性能联合实验室权威推荐
+  14          
+  15           * Copyright (C), 2013-2015, 兰州文轩电子科技有限公司/清华大学出版社
+  16           
+  17           * 仅供学习使用，未经作者许可，不得用于其它商业用途，盗版必究。
+  18          ************************************************************************************** */
+  19          
+  20          #include "FsBSP_PCF8563T.h"
+  21          
+  22          /* ***************************************************** */
+  23          // 函数名称：DectectBusyBit()
+  24          // 函数功能：液晶遇忙检测
+  25          // 入口参数：无
+  26          // 出口参数：无
+  27          /* ***************************************************** */
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   ----    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

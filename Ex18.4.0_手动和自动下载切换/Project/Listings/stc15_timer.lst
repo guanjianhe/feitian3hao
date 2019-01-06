@@ -1,0 +1,223 @@
+C51 COMPILER V9.00   STC15_TIMER                                                           09/28/2015 22:59:47 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE STC15_TIMER
+OBJECT MODULE PLACED IN .\Objects\stc15_timer.obj
+COMPILER INVOKED BY: D:\PrjSW\Keil5\C51\BIN\C51.EXE ..\STCLib\src\stc15_timer.c OMF2 OPTIMIZE(8,SPEED) BROWSE INCDIR(..\
+                    -FsBSP\inc;..\FsBSP\src;..\STCLib\inc;..\STCLib\src;..\USER) DEBUG PRINT(.\Listings\stc15_timer.lst) OBJECT(.\Objects\stc
+                    -15_timer.obj)
+
+line level    source
+
+   1          /* ****************************** ×÷Õß£º²ÐÞÄÎò¶÷ *****************************************
+   2           * ÎÄ¼þÃû³Æ : STC15_Timer.c
+   3           * Ó²¼þÆ½Ì¨ £ºïwÌìÈýÌ– FSST15ÊµÑé°å
+   4           * Èí¼þ»·¾³ £ºKeil uVision5.13
+   5           * 
+   6           * °æ±¾´úºÅ     : V1.0                                          
+   7           * ÐÞ¸ÄÈÕÆÚ     : 2015-08-12
+   8           * ¼¼ÊõÂÛÌ³ £ºµç×Ó¹¤³ÌÊ¦»ùµØ£¨http://www.ieebase.net£©
+   9           * ÌÔ±¦µêÆÌ £ºhttp://fsmcu.taobao.com
+  10           * ÎÄ¼þËµÃ÷ £º±¾Àý³ÌÎª½Ì²Ä¡¶ÓëSTC15µ¥Æ¬»úÇ£ÊÖµÄÄÇÐ©Äê¡·£¨Çå»ª´óÑ§³ö°æÉç£©ÅäÌ×Àý³Ì
+  11                                    ÎªÊÓÆµ¡¶ÉîÈëÇ³³öÍæ×ªSTC15µ¥Æ¬»ú¡·ÅäÌ×Àý³Ì£¨Â¼ÖÆ100½²--Î÷°²£ºÓÞ¹«£©
+  12                                    ÊÓÆµºÍÊé¼®¾ù±»STC£¨ÉîÛÚºê¾§¿Æ¼¼£©¹Ù·½´óÑ§¼Æ»®ºÍ¸ßÐ£¸ßÐÔÄÜÁªºÏÊµÑéÊÒÈ¨ÍþÍÆ¼ö
+  13          
+  14           * Copyright (C), 2013-2015, ÁõÆ½£¨xymbmcu@163.com£©/Çå»ª´óÑ§³ö°æÉç/STC MCU Limited
+  15           
+  16           * ½ö¹©Ñ§Ï°Ê¹ÓÃ£¬Î´¾­×÷ÕßÐí¿É£¬²»µÃÓÃÓÚÆäËüÉÌÒµÓÃÍ¾£¬µÁ°æ±Ø¾¿¡£
+  17          ************************************************************************************** */
+  18          
+  19          #include        "STC15_Timer.h"
+  20          
+  21          u16 g_uiCnt_Time = 0;           //Ê±¼äÎª10us¼ÆÊýÒ»´Î
+  22          extern bit g_bProgmOK;          //ÏÂÔØ¼ì²âOK±ê×¼Î»
+  23          bit g_bKeyScanFlag = 0;         //°´¼üÉ¨Ãè±êÖ¾Î»
+  24          
+  25          /********************* Timer0ÖÐ¶Ïº¯Êý************************/
+  26          void Timer0_ISR (void) interrupt TIMER0_VECTOR
+  27          {
+  28   1              g_uiCnt_Time++;         // Ê±¼ä»ù×¼¡£Ã¿¹ý10us¼ÓÒ»´Î£¡
+  29   1      }
+  30          
+  31          /********************* Timer1ÖÐ¶Ïº¯Êý************************/
+  32          void Timer1_ISR (void) interrupt TIMER1_VECTOR
+  33          {
+  34   1      
+  35   1      }
+  36          
+  37          /********************* Timer2ÖÐ¶Ïº¯Êý************************/
+  38          void Timer2_ISR (void) interrupt TIMER2_VECTOR
+  39          {
+  40   1              static u8 uOkPowOnTime = 0;             // ÏÂÔØ¼ì²âOKµ½¿ª»úµÄ¼ä¸ôÊ±¼ä£¬Ã¿¹ý20ms¼ÓÒ»´Î
+  41   1              static bit TempFlag = 0;                // ¿ª»úÖ®ºóµ½¿ªÍâ²¿ÖÐ¶ÏµÄ±êÖ¾Î»
+  42   1              static u8 uPowOnInt4Time = 0;   // ¿ª»úÖ®ºóµ½¿ªÍâ²¿ÖÐ¶ÏµÄÊ±¼ä£¬Ã¿¹ý20ms¼ÓÒ»´Î
+  43   1              
+  44   1              g_bKeyScanFlag = 1;
+  45   1              
+  46   1              if(g_bProgmOK)                                  // ¼ì²âµ½ÏÂÔØOKÖ®ºó¿ªÊ¼ÏÂÃæµÄ²Ù×÷
+  47   1              {
+  48   2                      g_bProgmOK = 0;                         // ÏÂÔØOK±êÖ¾Î»ÇåÁã
+  49   2                      uOkPowOnTime++;                         // ¼ÆÊý±äÁ¿Ã¿¹ý20ms¼ÓÒ»´Î
+  50   2                      if(uOkPowOnTime == 20)          // Èç¹û20*20msµ½ÁË,Ôò...
+  51   2                      {
+  52   3                              uOkPowOnTime = 0;
+  53   3                              OnOff_IO = 1;                   // ¸ßµçÆ½,¿ª»ú(ÊµÏÖ×Ô¶¯¿ªÆôµçÔ´)
+C51 COMPILER V9.00   STC15_TIMER                                                           09/28/2015 22:59:47 PAGE 2   
+
+  54   3                              TempFlag = 1;                   // ÖÃÎ»±êÖ¾Î»
+  55   3                      }
+  56   2              }
+  57   1              
+  58   1              if(TempFlag)                                    // ¿ª»úÖ®ºó£¬±êÖ¾ÒÑ¾­ÖÃÎ»
+  59   1              {
+  60   2                      uPowOnInt4Time++;                       // ¿ª»úºó£¬´ø²â±äÁ¿Ã¿¹ý20ms¼ÓÒ»´Î
+  61   2                      if(100 == uPowOnInt4Time)       // ¿ª»úºó£¬ÑÓÊ±£¬·ÀÖ¹Îó´¥·¢
+  62   2                      {
+  63   3                              uPowOnInt4Time = 0;
+  64   3                              TempFlag = 0;                   // ÇåÁã±êÖ¾Î»
+  65   3                              INT_CLKO |= 0x40;               // ¿ªÆôÍâ²¿ÖÐ¶Ï4
+  66   3                      }
+  67   2              }
+  68   1      }
+  69          
+  70          /********************* Timer3ÖÐ¶Ïº¯Êý************************/
+  71          void timer3_int (void) interrupt TIMER3_VECTOR
+  72          {
+  73   1      
+  74   1      }
+  75          
+  76          /********************* Timer4ÖÐ¶Ïº¯Êý************************/
+  77          void timer4_int (void) interrupt TIMER4_VECTOR
+  78          {
+  79   1      
+  80   1      }
+  81          
+  82          //========================================================================
+  83          // º¯Êý: uint8  Timer_Inilize(uint8 TIM, TIM_InitTypeDef *TIMx)
+  84          // ÃèÊö: ¶¨Ê±Æ÷³õÊ¼»¯³ÌÐò.
+  85          // ²ÎÊý: TIMx: ½á¹¹²ÎÊý,Çë²Î¿¼timer.hÀïµÄ¶¨Òå.
+  86          // ·µ»Ø: ³É¹¦·µ»Ø0, ¿Õ²Ù×÷·µ»Ø1,´íÎó·µ»Ø2.
+  87          // °æ±¾: V1.0, 2012-10-22
+  88          //========================================================================
+  89          u8 Timer_Inilize(uint8 TIM, TIM_InitTypeDef *TIMx)
+  90          {
+  91   1              if(TIM > Timer4)        return 1;       //¿Õ²Ù×÷
+  92   1      
+  93   1              if(TIM == Timer0)
+  94   1              {
+  95   2                      if(TIMx->TIM_Mode >  TIM_16BitAutoReloadNoMask) return 2;       //´íÎó
+  96   2                      TR0 = 0;                //Í£Ö¹¼ÆÊý
+  97   2                      ET0 = 0;        //½ûÖ¹ÖÐ¶Ï
+  98   2                      PT0 = 0;        //µÍÓÅÏÈ¼¶ÖÐ¶Ï
+  99   2                      TMOD &= 0xf0;   //¶¨Ê±Ä£Ê½, 16Î»×Ô¶¯ÖØ×°
+ 100   2                      AUXR &= ~0x80;  //12TÄ£Ê½, 
+ 101   2                      INT_CLKO &= ~0x01;      //²»Êä³öÊ±ÖÓ
+ 102   2                      if(TIMx->TIM_Interrupt == ENABLE)               ET0 = 1;        //ÔÊÐíÖÐ¶Ï
+ 103   2                      if(TIMx->TIM_Polity == PolityHigh)              PT0 = 1;        //¸ßÓÅÏÈ¼¶ÖÐ¶Ï
+ 104   2                      TMOD |= TIMx->TIM_Mode; //¹¤×÷Ä£Ê½,0: 16Î»×Ô¶¯ÖØ×°, 1: 16Î»¶¨Ê±/¼ÆÊý, 2: 8Î»×Ô¶¯ÖØ×°, 3: 16Î»×Ô¶¯ÖØ×°, ²
+             -»¿ÉÆÁ±ÎÖÐ¶Ï
+ 105   2                      if(TIMx->TIM_ClkSource == TIM_CLOCK_1T)         AUXR |=  0x80;  //1T
+ 106   2                      if(TIMx->TIM_ClkSource == TIM_CLOCK_Ext)        TMOD |=  0x04;  //¶ÔÍâ¼ÆÊý»ò·ÖÆµ
+ 107   2                      if(TIMx->TIM_ClkOut == ENABLE)  INT_CLKO |=  0x01;      //Êä³öÊ±ÖÓ
+ 108   2                      
+ 109   2                      TH0 = (u8)(TIMx->TIM_Value >> 8);
+ 110   2                      TL0 = (u8)TIMx->TIM_Value;
+ 111   2                      if(TIMx->TIM_Run == ENABLE)     TR0 = 1;        //¿ªÊ¼ÔËÐÐ
+ 112   2                      return  0;              //³É¹¦
+ 113   2              }
+ 114   1      
+C51 COMPILER V9.00   STC15_TIMER                                                           09/28/2015 22:59:47 PAGE 3   
+
+ 115   1              if(TIM == Timer1)
+ 116   1              {
+ 117   2                      if(TIMx->TIM_Mode >= TIM_16BitAutoReloadNoMask) return 2;       //´íÎó
+ 118   2                      TR1 = 0;        //Í£Ö¹¼ÆÊý
+ 119   2                      ET1 = 0;        //½ûÖ¹ÖÐ¶Ï
+ 120   2                      PT1 = 0;        //µÍÓÅÏÈ¼¶ÖÐ¶Ï
+ 121   2                      TMOD &=  0x0f;  //¶¨Ê±Ä£Ê½, 16Î»×Ô¶¯ÖØ×°
+ 122   2                      AUXR &= ~0x40;  //12TÄ£Ê½, 
+ 123   2                      INT_CLKO &= ~0x02;      //²»Êä³öÊ±ÖÓ
+ 124   2                      if(TIMx->TIM_Interrupt == ENABLE)               ET1 = 1;        //ÔÊÐíÖÐ¶Ï
+ 125   2                      if(TIMx->TIM_Polity == PolityHigh)              PT1 = 1;        //¸ßÓÅÏÈ¼¶ÖÐ¶Ï
+ 126   2                      TMOD |= (TIMx->TIM_Mode << 4);  //¹¤×÷Ä£Ê½,0: 16Î»×Ô¶¯ÖØ×°, 1: 16Î»¶¨Ê±/¼ÆÊý, 2: 8Î»×Ô¶¯ÖØ×°
+ 127   2                      if(TIMx->TIM_ClkSource == TIM_CLOCK_1T)         AUXR |=  0x40;  //1T
+ 128   2                      if(TIMx->TIM_ClkSource == TIM_CLOCK_Ext)        TMOD |=  0x40;  //¶ÔÍâ¼ÆÊý»ò·ÖÆµ
+ 129   2                      if(TIMx->TIM_ClkOut == ENABLE)  INT_CLKO |=  0x02;      //Êä³öÊ±ÖÓ
+ 130   2                      
+ 131   2                      TH1 = (u8)(TIMx->TIM_Value >> 8);
+ 132   2                      TL1 = (u8)TIMx->TIM_Value;
+ 133   2                      if(TIMx->TIM_Run == ENABLE)     TR1 = 1;        //¿ªÊ¼ÔËÐÐ
+ 134   2                      return  0;              //³É¹¦
+ 135   2              }
+ 136   1      
+ 137   1              if(TIM == Timer2)               //Timer2,¹Ì¶¨Îª16Î»×Ô¶¯ÖØ×°, ÖÐ¶ÏÎÞÓÅÏÈ¼¶
+ 138   1              {
+ 139   2                      if(TIMx->TIM_ClkSource >  TIM_CLOCK_Ext)        return 2;
+ 140   2                      AUXR &= ~0x1c;          //Í£Ö¹¼ÆÊý, ¶¨Ê±Ä£Ê½, 12TÄ£Ê½
+ 141   2                      IE2  &= ~(1<<2);        //½ûÖ¹ÖÐ¶Ï
+ 142   2                      INT_CLKO &= ~0x04;      //²»Êä³öÊ±ÖÓ
+ 143   2                      if(TIMx->TIM_Interrupt == ENABLE)                       IE2  |=  (1<<2);        //ÔÊÐíÖÐ¶Ï
+ 144   2                      if(TIMx->TIM_ClkSource == TIM_CLOCK_1T)         AUXR |=  (1<<2);        //1T
+ 145   2                      if(TIMx->TIM_ClkSource == TIM_CLOCK_Ext)        AUXR |=  (1<<3);        //¶ÔÍâ¼ÆÊý»ò·ÖÆµ
+ 146   2                      if(TIMx->TIM_ClkOut == ENABLE)  INT_CLKO |=  0x04;      //Êä³öÊ±ÖÓ
+ 147   2      
+ 148   2                      TH2 = (u8)(TIMx->TIM_Value >> 8);
+ 149   2                      TL2 = (u8)TIMx->TIM_Value;
+ 150   2                      if(TIMx->TIM_Run == ENABLE)     AUXR |=  (1<<4);        //¿ªÊ¼ÔËÐÐ
+ 151   2                      return  0;              //³É¹¦
+ 152   2              }
+ 153   1      
+ 154   1              if(TIM == Timer3)               //Timer3,¹Ì¶¨Îª16Î»×Ô¶¯ÖØ×°, ÖÐ¶ÏÎÞÓÅÏÈ¼¶
+ 155   1              {
+ 156   2                      if(TIMx->TIM_ClkSource >  TIM_CLOCK_Ext)        return 2;
+ 157   2                      T4T3M &= 0xf0;          //Í£Ö¹¼ÆÊý, ¶¨Ê±Ä£Ê½, 12TÄ£Ê½, ²»Êä³öÊ±ÖÓ
+ 158   2                      IE2  &= ~(1<<5);        //½ûÖ¹ÖÐ¶Ï
+ 159   2                      if(TIMx->TIM_Interrupt == ENABLE)                       IE2  |=  (1<<5);        //ÔÊÐíÖÐ¶Ï
+ 160   2                      if(TIMx->TIM_ClkSource == TIM_CLOCK_1T)         T4T3M |=  (1<<1);       //1T
+ 161   2                      if(TIMx->TIM_ClkSource == TIM_CLOCK_Ext)        T4T3M |=  (3<<1);       //¶ÔÍâ¼ÆÊý»ò·ÖÆµ
+ 162   2                      if(TIMx->TIM_ClkOut == ENABLE)  T4T3M |=  1;    //Êä³öÊ±ÖÓ
+ 163   2      
+ 164   2                      TH3 = (u8)(TIMx->TIM_Value >> 8);
+ 165   2                      TL3 = (u8)TIMx->TIM_Value;
+ 166   2                      if(TIMx->TIM_Run == ENABLE)     T4T3M |=  (1<<3);       //¿ªÊ¼ÔËÐÐ
+ 167   2                      return  0;              //³É¹¦
+ 168   2              }
+ 169   1      
+ 170   1              if(TIM == Timer4)               //Timer4,¹Ì¶¨Îª16Î»×Ô¶¯ÖØ×°, ÖÐ¶ÏÎÞÓÅÏÈ¼¶
+ 171   1              {
+ 172   2                      if(TIMx->TIM_ClkSource >  TIM_CLOCK_Ext)        return 2;
+ 173   2                      T4T3M &= 0x0f;          //Í£Ö¹¼ÆÊý, ¶¨Ê±Ä£Ê½, 12TÄ£Ê½, ²»Êä³öÊ±ÖÓ
+ 174   2                      IE2  &= ~(1<<6);        //½ûÖ¹ÖÐ¶Ï
+ 175   2                      if(TIMx->TIM_Interrupt == ENABLE)                       IE2  |=  (1<<6);        //ÔÊÐíÖÐ¶Ï
+ 176   2                      if(TIMx->TIM_ClkSource == TIM_CLOCK_1T)         T4T3M |=  (1<<5);       //1T
+C51 COMPILER V9.00   STC15_TIMER                                                           09/28/2015 22:59:47 PAGE 4   
+
+ 177   2                      if(TIMx->TIM_ClkSource == TIM_CLOCK_Ext)        T4T3M |=  (3<<5);       //¶ÔÍâ¼ÆÊý»ò·ÖÆµ
+ 178   2                      if(TIMx->TIM_ClkOut == ENABLE)  T4T3M |=  (1<<4);       //Êä³öÊ±ÖÓ
+ 179   2      
+ 180   2                      TH4 = (u8)(TIMx->TIM_Value >> 8);
+ 181   2                      TL4 = (u8)TIMx->TIM_Value;
+ 182   2                      if(TIMx->TIM_Run == ENABLE)     T4T3M |=  (1<<7);       //¿ªÊ¼ÔËÐÐ
+ 183   2                      return  0;              //³É¹¦
+ 184   2              }
+ 185   1      
+ 186   1              return 2;       //´íÎó
+ 187   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    636    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      2    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

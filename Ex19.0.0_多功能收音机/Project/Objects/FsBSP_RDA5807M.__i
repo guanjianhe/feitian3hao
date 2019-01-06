@@ -1,0 +1,1 @@
+"..\FsBSP\src\FsBSP_RDA5807M.c" OMF2 OPTIMIZE (9,SPEED) BROWSE INCDIR(..\FsBSP\inc;..\FsBSP\src;..\STCLib\inc;..\STCLib\src;..\USER) DEBUG PRINT(.\Listings\FsBSP_RDA5807M.lst) OBJECT(.\Objects\FsBSP_RDA5807M.obj)

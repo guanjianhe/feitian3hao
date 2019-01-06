@@ -1,0 +1,227 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        08/25/2015  22:32:49  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\PRJSW\KEIL5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\main.obj, .\Objects\FsBSP_Delay.obj, .\Objects\FsBSP_Ua
+>> rt.obj TO .\Objects\UART1_Demo PRINT (.\Listings\UART1_Demo.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\main.obj (MAIN)
+  .\Objects\FsBSP_Delay.obj (FSBSP_DELAY)
+  .\Objects\FsBSP_Uart.obj (FSBSP_UART)
+  D:\PRJSW\KEIL5\C51\LIB\C51S.LIB (?C?CLDPTR)
+
+
+LINK MAP OF MODULE:  .\Objects\UART1_Demo (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         _DATA_GROUP_
+            IDATA   000BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     00D7H     UNIT         ?CO?MAIN
+            CODE    00DAH     0039H     UNIT         ?PR?MAIN?MAIN
+            CODE    0113H     0025H     UNIT         ?PR?_UART_SENDSTRING?FSBSP_UART
+            CODE    0138H     0019H     UNIT         ?C?LIB_CODE
+            CODE    0151H     0017H     UNIT         ?PR?_DELAYMS?FSBSP_DELAY
+            CODE    0168H     0017H     UNIT         ?PR?UART1_INIT?FSBSP_UART
+            CODE    017FH     000CH     UNIT         ?C_C51STARTUP
+            CODE    018BH     0008H     UNIT         ?PR?_UART_SENDONEBYTE?FSBSP_UART
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\UART1_Demo (?C_STARTUP)
+
+
+SEGMENT                                    DATA_GROUP 
+  +--> CALLED SEGMENT                    START    LENGTH
+--------------------------------------------------------
+?C_C51STARTUP                            -----    -----
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN                            -----    -----
+  +--> ?PR?UART1_INIT?FSBSP_UART
+  +--> ?PR?_DELAYMS?FSBSP_DELAY
+  +--> ?CO?MAIN
+  +--> ?PR?_UART_SENDSTRING?FSBSP_UART
+
+?PR?_UART_SENDSTRING?FSBSP_UART          0008H    0003H
+  +--> ?PR?_UART_SENDONEBYTE?FSBSP_UART
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/25/2015  22:32:49  PAGE 2
+
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\UART1_Demo (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:017FH         SEGMENT       ?C_C51STARTUP
+  I:000BH         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0182H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:017FH         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:017FH         LINE#         133
+  C:0181H         LINE#         134
+  C:0182H         LINE#         135
+  C:0183H         LINE#         136
+  C:0185H         LINE#         185
+  C:0188H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  D:00C8H         PUBLIC        P5
+  D:00E8H         PUBLIC        P6
+  D:00F8H         PUBLIC        P7
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:00D8H         PUBLIC        CCON
+  C:00DAH         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/25/2015  22:32:49  PAGE 3
+
+
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  C:00DAH         LINE#         31
+  C:00DAH         LINE#         32
+  C:00DAH         LINE#         33
+  C:00DDH         LINE#         34
+  C:00E4H         LINE#         35
+  C:00EDH         LINE#         36
+  C:00F6H         LINE#         37
+  C:00FFH         LINE#         38
+  C:0108H         LINE#         39
+  C:0111H         LINE#         40
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        FSBSP_DELAY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0151H         PUBLIC        _DelayMS
+  -------         PROC          _DELAYMS
+  D:0006H         SYMBOL        ms
+  -------         DO            
+  D:0004H         SYMBOL        i
+  -------         ENDDO         
+  C:0151H         LINE#         28
+  C:0151H         LINE#         29
+  C:0151H         LINE#         31
+  C:0151H         LINE#         32
+  C:0155H         LINE#         33
+  C:015EH         LINE#         34
+  C:0167H         LINE#         35
+  -------         ENDPROC       _DELAYMS
+  -------         ENDMOD        FSBSP_DELAY
+
+  -------         MODULE        FSBSP_UART
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  D:00C8H         PUBLIC        P5
+  D:00E8H         PUBLIC        P6
+  D:00F8H         PUBLIC        P7
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  B:0098H.1       PUBLIC        TI
+  D:00D8H         PUBLIC        CCON
+  C:0113H         PUBLIC        _UART_SendString
+  D:0099H         PUBLIC        SBUF
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  D:008EH         PUBLIC        AUXR
+  B:00A8H.3       PUBLIC        ET1
+  D:008DH         PUBLIC        TH1
+  D:008BH         PUBLIC        TL1
+  B:0088H.6       PUBLIC        TR1
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/25/2015  22:32:49  PAGE 4
+
+
+  C:018BH         PUBLIC        _UART_SendOneByte
+  C:0168H         PUBLIC        UART1_Init
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          UART1_INIT
+  C:0168H         LINE#         28
+  C:0168H         LINE#         29
+  C:0168H         LINE#         30
+  C:016BH         LINE#         31
+  C:016EH         LINE#         32
+  C:0171H         LINE#         33
+  C:0174H         LINE#         34
+  C:0177H         LINE#         35
+  C:017AH         LINE#         36
+  C:017CH         LINE#         37
+  C:017EH         LINE#         38
+  -------         ENDPROC       UART1_INIT
+  -------         PROC          _UART_SENDONEBYTE
+  D:0007H         SYMBOL        uDat
+  C:018BH         LINE#         46
+  C:018BH         LINE#         47
+  C:018BH         LINE#         48
+  C:018DH         LINE#         49
+  C:0190H         LINE#         50
+  C:0192H         LINE#         52
+  -------         ENDPROC       _UART_SENDONEBYTE
+  -------         PROC          _UART_SENDSTRING
+  D:0008H         SYMBOL        upStr
+  C:0113H         LINE#         59
+  C:0119H         LINE#         60
+  C:0119H         LINE#         61
+  C:0124H         LINE#         62
+  C:0124H         LINE#         63
+  C:0135H         LINE#         65
+  C:0137H         LINE#         66
+  -------         ENDPROC       _UART_SENDSTRING
+  -------         ENDMOD        FSBSP_UART
+
+  -------         MODULE        ?C?CLDPTR
+  C:0138H         PUBLIC        ?C?CLDPTR
+  -------         ENDMOD        ?C?CLDPTR
+
+Program Size: data=12.0 xdata=0 code=403
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

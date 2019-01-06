@@ -1,0 +1,368 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        09/24/2015  07:08:37  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\PRJSW\KEIL5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\stc15_delay.obj, .\Objects\main.obj, .\Objects\FsBSP_Ti
+>> mer.obj, .\Objects\FsBSP_Adc.obj TO .\Objects\Touch_KEY_Demo PRINT (.\Listings\Touch_KEY_Demo.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\stc15_delay.obj (STC15_DELAY)
+  .\Objects\main.obj (MAIN)
+  .\Objects\FsBSP_Timer.obj (FSBSP_TIMER)
+  .\Objects\FsBSP_Adc.obj (FSBSP_ADC)
+
+
+LINK MAP OF MODULE:  .\Objects\Touch_KEY_Demo (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         ?DT?MAIN
+            IDATA   0009H     0038H     UNIT         ?ID?FSBSP_ADC
+            IDATA   0041H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0081H     UNIT         ?PR?AUTOZERO?FSBSP_ADC
+            CODE    0084H     0063H     UNIT         ?PR?_CHECK_ADC?FSBSP_ADC
+            CODE    00E7H     0054H     UNIT         ?PR?MAIN?MAIN
+            CODE    013BH     002AH     UNIT         ?PR?_GET_ADC10BITRESULT?FSBSP_ADC
+            CODE    0165H     0017H     UNIT         ?PR?_DELAY_MS?STC15_DELAY
+            CODE    017CH     0016H     UNIT         ?PR?TIMER0_INIT?FSBSP_TIMER
+            CODE    0192H     0010H     UNIT         ?PR?SHOWLED?MAIN
+            CODE    01A2H     000CH     UNIT         ?C_C51STARTUP
+            CODE    01AEH     0007H     UNIT         ?PR?ADC_INIT?FSBSP_ADC
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\Touch_KEY_Demo (?C_STARTUP)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN
+  +--> ?PR?_DELAY_MS?STC15_DELAY
+  +--> ?PR?TIMER0_INIT?FSBSP_TIMER
+  +--> ?PR?ADC_INIT?FSBSP_ADC
+  +--> ?PR?SHOWLED?MAIN
+  +--> ?PR?AUTOZERO?FSBSP_ADC
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/24/2015  07:08:37  PAGE 2
+
+
+?PR?SHOWLED?MAIN
+  +--> ?PR?_CHECK_ADC?FSBSP_ADC
+
+?PR?_CHECK_ADC?FSBSP_ADC
+  +--> ?PR?_GET_ADC10BITRESULT?FSBSP_ADC
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Touch_KEY_Demo (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:01A2H         SEGMENT       ?C_C51STARTUP
+  I:0041H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:01A5H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:01A2H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:01A2H         LINE#         133
+  C:01A4H         LINE#         134
+  C:01A5H         LINE#         135
+  C:01A6H         LINE#         136
+  C:01A8H         LINE#         185
+  C:01ABH         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        STC15_DELAY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  D:00C8H         PUBLIC        P5
+  D:00E8H         PUBLIC        P6
+  D:00F8H         PUBLIC        P7
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/24/2015  07:08:37  PAGE 3
+
+
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:00D8H         PUBLIC        CCON
+  C:0165H         PUBLIC        _Delay_ms
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:00F0H         PUBLIC        B
+  D:00E0H         PUBLIC        ACC
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        ms
+  -------         DO            
+  D:0004H         SYMBOL        i
+  -------         ENDDO         
+  C:0165H         LINE#         30
+  C:0165H         LINE#         31
+  C:0165H         LINE#         34
+  C:0165H         LINE#         35
+  C:0169H         LINE#         36
+  C:0172H         LINE#         37
+  C:0172H         LINE#         38
+  C:017BH         LINE#         39
+  -------         ENDPROC       _DELAY_MS
+  -------         ENDMOD        STC15_DELAY
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  D:00C8H         PUBLIC        P5
+  D:00E8H         PUBLIC        P6
+  D:00F8H         PUBLIC        P7
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:0008H         PUBLIC        cnt_250ms
+  D:00D8H         PUBLIC        CCON
+  C:00E7H         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  B:00F8H.4       PUBLIC        P_LED4
+  D:00F0H         PUBLIC        B
+  D:00E0H         PUBLIC        ACC
+  C:0192H         PUBLIC        ShowLED
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          SHOWLED
+  -------         DO            
+  D:0007H         SYMBOL        i
+  -------         ENDDO         
+  C:0192H         LINE#         34
+  C:0192H         LINE#         35
+  C:0192H         LINE#         49
+  C:0197H         LINE#         50
+  C:019CH         LINE#         51
+  C:01A1H         LINE#         61
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/24/2015  07:08:37  PAGE 4
+
+
+  -------         ENDPROC       SHOWLED
+  -------         PROC          MAIN
+  -------         DO            
+  D:0007H         SYMBOL        i
+  -------         ENDDO         
+  C:00E7H         LINE#         63
+  C:00E7H         LINE#         64
+  C:00E7H         LINE#         66
+  C:00EEH         LINE#         67
+  C:00F1H         LINE#         68
+  C:00F4H         LINE#         69
+  C:00FBH         LINE#         71
+  C:00FDH         LINE#         72
+  C:00FDH         LINE#         73
+  C:0108H         LINE#         74
+  C:0113H         LINE#         75
+  C:0119H         LINE#         76
+  C:011DH         LINE#         77
+  C:0120H         LINE#         79
+  C:0120H         LINE#         80
+  C:0120H         LINE#         81
+  C:0127H         LINE#         82
+  C:012AH         LINE#         83
+  C:0133H         LINE#         84
+  C:0133H         LINE#         85
+  C:0136H         LINE#         86
+  C:0139H         LINE#         87
+  C:0139H         LINE#         89
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        FSBSP_TIMER
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  D:00C8H         PUBLIC        P5
+  D:00E8H         PUBLIC        P6
+  D:00F8H         PUBLIC        P7
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:00D8H         PUBLIC        CCON
+  C:017CH         PUBLIC        Timer0_Init
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  D:00F0H         PUBLIC        B
+  D:008EH         PUBLIC        AUXR
+  D:00E0H         PUBLIC        ACC
+  B:00A8H.1       PUBLIC        ET0
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  D:008FH         PUBLIC        AUXR2
+  D:00D0H         PUBLIC        PSW
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/24/2015  07:08:37  PAGE 5
+
+
+  -------         PROC          TIMER0_INIT
+  C:017CH         LINE#         23
+  C:017CH         LINE#         24
+  C:017CH         LINE#         25
+  C:017EH         LINE#         26
+  C:0180H         LINE#         27
+  C:0183H         LINE#         28
+  C:0186H         LINE#         29
+  C:0189H         LINE#         30
+  C:018CH         LINE#         31
+  C:018FH         LINE#         32
+  C:0191H         LINE#         33
+  -------         ENDPROC       TIMER0_INIT
+  -------         ENDMOD        FSBSP_TIMER
+
+  -------         MODULE        FSBSP_ADC
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  D:00C8H         PUBLIC        P5
+  D:00E8H         PUBLIC        P6
+  D:00F8H         PUBLIC        P7
+  C:0084H         PUBLIC        _check_adc
+  D:00A8H         PUBLIC        IE
+  D:00BDH         PUBLIC        ADC_RES
+  D:00B8H         PUBLIC        IP
+  D:00D8H         PUBLIC        CCON
+  I:0009H         PUBLIC        TouchZero
+  I:0019H         PUBLIC        adc
+  D:00BCH         PUBLIC        ADC_CONTR
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:0003H         PUBLIC        AutoZero
+  D:00F0H         PUBLIC        B
+  D:00E0H         PUBLIC        ACC
+  I:0029H         PUBLIC        adc_prev
+  I:0039H         PUBLIC        TouchZeroCnt
+  D:009DH         PUBLIC        P1ASF
+  C:01AEH         PUBLIC        ADC_init
+  D:00BEH         PUBLIC        ADC_RESL
+  C:013BH         PUBLIC        _Get_ADC10bitResult
+  B:00D0H.5       PUBLIC        F0
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          ADC_INIT
+  C:01AEH         LINE#         27
+  C:01AEH         LINE#         28
+  C:01AEH         LINE#         29
+  C:01B1H         LINE#         30
+  C:01B4H         LINE#         31
+  -------         ENDPROC       ADC_INIT
+  -------         PROC          _GET_ADC10BITRESULT
+  D:0007H         SYMBOL        channel
+  C:013BH         LINE#         39
+  C:013BH         LINE#         40
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/24/2015  07:08:37  PAGE 6
+
+
+  C:013BH         LINE#         41
+  C:013EH         LINE#         42
+  C:0140H         LINE#         43
+  C:0145H         LINE#         44
+  C:0146H         LINE#         45
+  C:0147H         LINE#         46
+  C:0148H         LINE#         47
+  C:0149H         LINE#         48
+  C:014EH         LINE#         49
+  C:0151H         LINE#         50
+  C:0164H         LINE#         51
+  -------         ENDPROC       _GET_ADC10BITRESULT
+  -------         PROC          AUTOZERO
+  -------         DO            
+  D:0005H         SYMBOL        i
+  D:0006H         SYMBOL        j
+  D:0002H         SYMBOL        k
+  -------         ENDDO         
+  C:0003H         LINE#         53
+  C:0003H         LINE#         54
+  C:0003H         LINE#         58
+  C:0005H         LINE#         59
+  C:0005H         LINE#         60
+  C:0010H         LINE#         61
+  C:001EH         LINE#         62
+  C:0020H         LINE#         63
+  C:002CH         LINE#         64
+  C:0035H         LINE#         65
+  C:0035H         LINE#         66
+  C:003BH         LINE#         67
+  C:0049H         LINE#         68
+  C:004BH         LINE#         70
+  C:004BH         LINE#         71
+  C:0056H         LINE#         72
+  C:0056H         LINE#         73
+  C:005CH         LINE#         74
+  C:0072H         LINE#         75
+  C:0072H         LINE#         76
+  C:0072H         LINE#         77
+  C:007DH         LINE#         78
+  C:0083H         LINE#         79
+  -------         ENDPROC       AUTOZERO
+  -------         PROC          _CHECK_ADC
+  D:0004H         SYMBOL        index
+  -------         DO            
+  D:0006H         SYMBOL        delta
+  -------         ENDDO         
+  C:0084H         LINE#         81
+  C:0086H         LINE#         82
+  C:0086H         LINE#         84
+  C:009DH         LINE#         85
+  C:00B7H         LINE#         86
+  C:00CCH         LINE#         87
+  C:00D8H         LINE#         88
+  C:00E4H         LINE#         89
+  C:00E6H         LINE#         90
+  -------         ENDPROC       _CHECK_ADC
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/24/2015  07:08:37  PAGE 7
+
+
+  -------         ENDMOD        FSBSP_ADC
+
+Program Size: data=66.0 xdata=0 code=437
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

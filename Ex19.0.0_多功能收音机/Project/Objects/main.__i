@@ -1,0 +1,1 @@
+"..\USER\main.c" OMF2 OPTIMIZE (9,SPEED) BROWSE INCDIR(..\FsBSP\inc;..\FsBSP\src;..\STCLib\inc;..\STCLib\src;..\USER) DEBUG PRINT(.\Listings\main.lst) OBJECT(.\Objects\main.obj)

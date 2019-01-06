@@ -1,0 +1,421 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        08/30/2015  13:56:22  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\FsBSP_1602.obj, .\Objects\FsBSP_AllLedFlash.obj, .\Objects\
+>> FsBSP_Delay.obj, .\Objects\main.obj TO .\Objects\CGRAM_Demo PRINT (.\Listings\CGRAM_Demo.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\FsBSP_1602.obj (FSBSP_1602)
+  .\Objects\FsBSP_AllLedFlash.obj (FSBSP_ALLLEDFLASH)
+  .\Objects\FsBSP_Delay.obj (FSBSP_DELAY)
+  .\Objects\main.obj (MAIN)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?COPY)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?CLDPTR)
+
+
+LINK MAP OF MODULE:  .\Objects\CGRAM_Demo (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0016H     UNIT         _DATA_GROUP_
+            IDATA   001EH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     010FH     UNIT         ?C?LIB_CODE
+            CODE    0112H     005EH     UNIT         ?PR?DISPALY_1602?FSBSP_1602
+            CODE    0170H     002EH     UNIT         ?PR?_INITLCDCN?FSBSP_1602
+            CODE    019EH     0029H     UNIT         ?PR?_LCDSHOWSTR?FSBSP_1602
+            CODE    01C7H     0027H     UNIT         ?PR?LCD_INIT?FSBSP_1602
+            CODE    01EEH     0022H     UNIT         ?CO?FSBSP_1602
+            CODE    0210H     0022H     UNIT         ?PR?LEDGPIO_INIT?FSBSP_ALLLEDFLASH
+            CODE    0232H     0020H     UNIT         ?PR?_DELAYMS?FSBSP_DELAY
+            CODE    0252H     0020H     UNIT         ?CO?MAIN
+            CODE    0272H     001EH     UNIT         ?PR?_WRDATLCD?FSBSP_1602
+            CODE    0290H     001BH     UNIT         ?PR?_LCDSETCURSOR?FSBSP_1602
+            CODE    02ABH     0018H     UNIT         ?PR?DECTECTBUSYBIT?FSBSP_1602
+            CODE    02C3H     0018H     UNIT         ?PR?_WRCOMLCD?FSBSP_1602
+            CODE    02DBH     0011H     UNIT         ?PR?_LCDSHOWCN?FSBSP_1602
+            CODE    02ECH     000CH     UNIT         ?C_C51STARTUP
+            CODE    02F8H     0008H     UNIT         ?PR?MAIN?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\CGRAM_Demo (?C_STARTUP)
+
+
+SEGMENT                                      DATA_GROUP 
+  +--> CALLED SEGMENT                      START    LENGTH
+----------------------------------------------------------
+?C_C51STARTUP                              -----    -----
+  +--> ?PR?MAIN?MAIN
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/30/2015  13:56:22  PAGE 2
+
+
+
+?PR?MAIN?MAIN                              -----    -----
+  +--> ?PR?LEDGPIO_INIT?FSBSP_ALLLEDFLASH
+  +--> ?PR?DISPALY_1602?FSBSP_1602
+
+?PR?DISPALY_1602?FSBSP_1602                0008H    0011H
+  +--> ?CO?FSBSP_1602
+  +--> ?PR?LCD_INIT?FSBSP_1602
+  +--> ?CO?MAIN
+  +--> ?PR?_INITLCDCN?FSBSP_1602
+  +--> ?PR?_LCDSHOWSTR?FSBSP_1602
+  +--> ?PR?_LCDSHOWCN?FSBSP_1602
+
+?PR?LCD_INIT?FSBSP_1602                    -----    -----
+  +--> ?PR?_WRCOMLCD?FSBSP_1602
+  +--> ?PR?_DELAYMS?FSBSP_DELAY
+
+?PR?_WRCOMLCD?FSBSP_1602                   001DH    0001H
+  +--> ?PR?DECTECTBUSYBIT?FSBSP_1602
+  +--> ?PR?_DELAYMS?FSBSP_DELAY
+
+?PR?DECTECTBUSYBIT?FSBSP_1602              -----    -----
+  +--> ?PR?_DELAYMS?FSBSP_DELAY
+
+?PR?_INITLCDCN?FSBSP_1602                  0019H    0004H
+  +--> ?PR?_WRCOMLCD?FSBSP_1602
+  +--> ?PR?_WRDATLCD?FSBSP_1602
+  +--> ?PR?_DELAYMS?FSBSP_DELAY
+
+?PR?_WRDATLCD?FSBSP_1602                   001DH    0001H
+  +--> ?PR?DECTECTBUSYBIT?FSBSP_1602
+  +--> ?PR?_DELAYMS?FSBSP_DELAY
+
+?PR?_LCDSHOWSTR?FSBSP_1602                 0019H    0003H
+  +--> ?PR?_LCDSETCURSOR?FSBSP_1602
+  +--> ?PR?_WRDATLCD?FSBSP_1602
+  +--> ?PR?_DELAYMS?FSBSP_DELAY
+
+?PR?_LCDSETCURSOR?FSBSP_1602               001CH    0001H
+  +--> ?PR?_WRCOMLCD?FSBSP_1602
+  +--> ?PR?_DELAYMS?FSBSP_DELAY
+
+?PR?_LCDSHOWCN?FSBSP_1602                  0019H    0001H
+  +--> ?PR?_LCDSETCURSOR?FSBSP_1602
+  +--> ?PR?_WRDATLCD?FSBSP_1602
+  +--> ?PR?_DELAYMS?FSBSP_DELAY
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\CGRAM_Demo (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:02ECH         SEGMENT       ?C_C51STARTUP
+  I:001EH         SEGMENT       ?STACK
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/30/2015  13:56:22  PAGE 3
+
+
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:02EFH         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:02ECH         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:02ECH         LINE#         133
+  C:02EEH         LINE#         134
+  C:02EFH         LINE#         135
+  C:02F0H         LINE#         136
+  C:02F2H         LINE#         185
+  C:02F5H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        FSBSP_1602
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  C:0112H         PUBLIC        Dispaly_1602
+  D:00C8H         PUBLIC        P5
+  D:00E8H         PUBLIC        P6
+  D:00F8H         PUBLIC        P7
+  C:02ABH         PUBLIC        DectectBusyBit
+  D:00A8H         PUBLIC        IE
+  B:00B0H.5       PUBLIC        EN
+  D:00B8H         PUBLIC        IP
+  D:00D8H         PUBLIC        CCON
+  B:00B0H.3       PUBLIC        RS
+  B:00B0H.4       PUBLIC        RW
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:0278H         PUBLIC        _WrDatLCD
+  C:02C3H         PUBLIC        _WrComLCD
+  C:01FFH         SYMBOL        _?ix1000
+  C:0290H         PUBLIC        _LcdSetCursor
+  C:01C7H         PUBLIC        LCD_Init
+  C:0170H         PUBLIC        _InitLcdCn
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/30/2015  13:56:22  PAGE 4
+
+
+  C:02DBH         PUBLIC        _LcdShowCn
+  C:019EH         PUBLIC        _LcdShowStr
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          DECTECTBUSYBIT
+  C:02ABH         LINE#         30
+  C:02ABH         LINE#         31
+  C:02ABH         LINE#         32
+  C:02AEH         LINE#         33
+  C:02B0H         LINE#         34
+  C:02B2H         LINE#         35
+  C:02B4H         LINE#         36
+  C:02BBH         LINE#         37
+  C:02C0H         LINE#         38
+  C:02C2H         LINE#         39
+  -------         ENDPROC       DECTECTBUSYBIT
+  -------         PROC          _WRCOMLCD
+  D:001DH         SYMBOL        ComVal
+  C:02C3H         LINE#         46
+  C:02C5H         LINE#         47
+  C:02C5H         LINE#         48
+  C:02C8H         LINE#         49
+  C:02CAH         LINE#         50
+  C:02CCH         LINE#         51
+  C:02CEH         LINE#         52
+  C:02D1H         LINE#         53
+  C:02D8H         LINE#         54
+  C:02DAH         LINE#         55
+  -------         ENDPROC       _WRCOMLCD
+  -------         PROC          L?0023
+  -------         ENDPROC       L?0023
+  -------         PROC          _WRDATLCD
+  D:001DH         SYMBOL        DatVal
+  C:0278H         LINE#         62
+  C:027AH         LINE#         63
+  C:027AH         LINE#         64
+  C:027DH         LINE#         65
+  C:027FH         LINE#         66
+  C:0281H         LINE#         67
+  C:0283H         LINE#         68
+  C:0286H         LINE#         69
+  C:028DH         LINE#         70
+  C:028FH         LINE#         71
+  -------         ENDPROC       _WRDATLCD
+  -------         PROC          _LCDSETCURSOR
+  D:0007H         SYMBOL        x
+  D:0005H         SYMBOL        y
+  -------         DO            
+  D:001CH         SYMBOL        addr
+  -------         ENDDO         
+  C:0290H         LINE#         78
+  C:0290H         LINE#         79
+  C:0290H         LINE#         81
+  C:0293H         LINE#         82
+  C:0297H         LINE#         84
+  C:029CH         LINE#         85
+  C:02A4H         LINE#         86
+  -------         ENDPROC       _LCDSETCURSOR
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/30/2015  13:56:22  PAGE 5
+
+
+  -------         PROC          _LCDSHOWSTR
+  D:0007H         SYMBOL        x
+  D:0005H         SYMBOL        y
+  D:0019H         SYMBOL        str
+  C:019EH         LINE#         94
+  C:01A4H         LINE#         95
+  C:01A4H         LINE#         96
+  C:01A7H         LINE#         97
+  C:01B2H         LINE#         98
+  C:01B2H         LINE#         99
+  C:01BDH         LINE#         100
+  C:01C4H         LINE#         101
+  C:01C6H         LINE#         102
+  -------         ENDPROC       _LCDSHOWSTR
+  -------         PROC          _LCDSHOWCN
+  D:0007H         SYMBOL        x
+  D:0005H         SYMBOL        y
+  D:0019H         SYMBOL        seat
+  C:02DBH         LINE#         109
+  C:02DDH         LINE#         110
+  C:02DDH         LINE#         111
+  C:02E0H         LINE#         112
+  C:02E5H         LINE#         113
+  -------         ENDPROC       _LCDSHOWCN
+  -------         PROC          _INITLCDCN
+  D:0019H         SYMBOL        str
+  -------         DO            
+  D:001CH         SYMBOL        i
+  -------         ENDDO         
+  C:0170H         LINE#         121
+  C:0176H         LINE#         122
+  C:0176H         LINE#         124
+  C:017BH         LINE#         125
+  C:017EH         LINE#         126
+  C:017EH         LINE#         127
+  C:018DH         LINE#         128
+  C:0194H         LINE#         129
+  C:019DH         LINE#         130
+  -------         ENDPROC       _INITLCDCN
+  -------         PROC          LCD_INIT
+  C:01C7H         LINE#         137
+  C:01C7H         LINE#         138
+  C:01C7H         LINE#         139
+  C:01CCH         LINE#         140
+  C:01D3H         LINE#         141
+  C:01D8H         LINE#         142
+  C:01DDH         LINE#         143
+  C:01E2H         LINE#         144
+  C:01E9H         LINE#         145
+  -------         ENDPROC       LCD_INIT
+  -------         PROC          DISPALY_1602
+  -------         DO            
+  D:0008H         SYMBOL        str
+  -------         ENDDO         
+  C:0112H         LINE#         154
+  C:0112H         LINE#         155
+  C:0112H         LINE#         156
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/30/2015  13:56:22  PAGE 6
+
+
+  C:0125H         LINE#         157
+  C:0128H         LINE#         158
+  C:0131H         LINE#         159
+  C:013DH         LINE#         160
+  C:014AH         LINE#         161
+  C:0153H         LINE#         162
+  C:015CH         LINE#         163
+  C:0165H         LINE#         164
+  C:016EH         LINE#         165
+  -------         ENDPROC       DISPALY_1602
+  -------         ENDMOD        FSBSP_1602
+
+  -------         MODULE        FSBSP_ALLLEDFLASH
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0092H         PUBLIC        P1M0
+  D:0093H         PUBLIC        P0M1
+  D:0096H         PUBLIC        P2M0
+  D:0091H         PUBLIC        P1M1
+  D:0080H         PUBLIC        P0
+  D:00B2H         PUBLIC        P3M0
+  D:0095H         PUBLIC        P2M1
+  D:0090H         PUBLIC        P1
+  D:00B4H         PUBLIC        P4M0
+  D:00B1H         PUBLIC        P3M1
+  D:00A0H         PUBLIC        P2
+  D:00CAH         PUBLIC        P5M0
+  D:00B3H         PUBLIC        P4M1
+  D:00B0H         PUBLIC        P3
+  D:00CCH         PUBLIC        P6M0
+  D:00C9H         PUBLIC        P5M1
+  D:00C0H         PUBLIC        P4
+  D:00E2H         PUBLIC        P7M0
+  D:00CBH         PUBLIC        P6M1
+  D:00C8H         PUBLIC        P5
+  D:00E1H         PUBLIC        P7M1
+  D:00E8H         PUBLIC        P6
+  D:00F8H         PUBLIC        P7
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:00D8H         PUBLIC        CCON
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:0210H         PUBLIC        LedGPIO_Init
+  D:00D0H         PUBLIC        PSW
+  D:0094H         PUBLIC        P0M0
+  -------         PROC          LEDGPIO_INIT
+  C:0210H         LINE#         26
+  C:0210H         LINE#         27
+  C:0210H         LINE#         28
+  C:0215H         LINE#         29
+  C:0219H         LINE#         30
+  C:021DH         LINE#         31
+  C:0221H         LINE#         32
+  C:0225H         LINE#         33
+  C:0229H         LINE#         34
+  C:022DH         LINE#         35
+  C:0231H         LINE#         36
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/30/2015  13:56:22  PAGE 7
+
+
+  -------         ENDPROC       LEDGPIO_INIT
+  -------         ENDMOD        FSBSP_ALLLEDFLASH
+
+  -------         MODULE        FSBSP_DELAY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0232H         PUBLIC        _DelayMS
+  -------         PROC          _DELAYMS
+  D:0006H         SYMBOL        ValMS
+  -------         DO            
+  D:0004H         SYMBOL        uiVal
+  D:0002H         SYMBOL        ujVal
+  -------         ENDDO         
+  C:0232H         LINE#         36
+  C:0232H         LINE#         37
+  C:0232H         LINE#         39
+  C:023CH         LINE#         40
+  C:0251H         LINE#         41
+  -------         ENDPROC       _DELAYMS
+  -------         ENDMOD        FSBSP_DELAY
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  D:00C8H         PUBLIC        P5
+  D:00E8H         PUBLIC        P6
+  D:00F8H         PUBLIC        P7
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:00D8H         PUBLIC        CCON
+  C:02F8H         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:0252H         PUBLIC        tab
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  C:02F8H         LINE#         45
+  C:02F8H         LINE#         46
+  C:02F8H         LINE#         47
+  C:02FBH         LINE#         48
+  C:02FEH         LINE#         49
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        ?C?COPY
+  C:00D3H         PUBLIC        ?C?COPY
+  -------         ENDMOD        ?C?COPY
+
+  -------         MODULE        ?C?CLDPTR
+  C:00F9H         PUBLIC        ?C?CLDPTR
+  -------         ENDMOD        ?C?CLDPTR
+
+Program Size: data=31.0 xdata=0 code=768
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

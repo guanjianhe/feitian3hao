@@ -1,0 +1,11 @@
+".\Objects\FsBSP_1602.obj",
+".\Objects\FsBSP_LM75A.obj",
+".\Objects\FsBSP_PCF8563T.obj",
+".\Objects\FsBSP_RDA5807M.obj",
+".\Objects\stc15_delay.obj",
+".\Objects\stc15_gpio.obj",
+".\Objects\stc15_iic.obj",
+".\Objects\main.obj" 
+TO ".\Objects\FS15_MultifunctionalRadio" 
+
+PRINT(".\Listings\FS15_MultifunctionalRadio.map") REMOVEUNUSED 

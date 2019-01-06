@@ -1,0 +1,266 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        08/31/2015  22:58:22  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\PRJSW\KEIL5\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\stc15_gpio.obj TO .\Objects\FSST15_AT24C02 PRINT (.\Listin
+>> gs\FSST15_AT24C02.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  .\Objects\stc15_gpio.obj (STC15_GPIO)
+  D:\PRJSW\KEIL5\C51\LIB\C51S.LIB (?C_STARTUP)
+  D:\PRJSW\KEIL5\C51\LIB\C51S.LIB (?C?CLDPTR)
+  D:\PRJSW\KEIL5\C51\LIB\C51S.LIB (?C?CLDOPTR)
+
+
+LINK MAP OF MODULE:  .\Objects\FSST15_AT24C02 (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0002H     UNIT         ?DT?_GPIO_PWMINIT?STC15_GPIO
+            IDATA   000AH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     01F4H     UNIT         ?PR?_GPIO_INILIZE?STC15_GPIO
+            CODE    01F7H     0054H     UNIT         ?PR?_GPIO_PWMINIT?STC15_GPIO
+            CODE    024BH     0046H     UNIT         ?C?LIB_CODE
+            CODE    0291H     0012H     UNIT         ?PR?STC15_GPIO
+            CODE    02A3H     000CH     UNIT         ?C_C51STARTUP
+            CODE    02AFH     0002H     UNIT         ?PR?MAIN?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\FSST15_AT24C02 (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\FSST15_AT24C02 (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/31/2015  22:58:22  PAGE 2
+
+
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  D:00C8H         PUBLIC        P5
+  D:00E8H         PUBLIC        P6
+  D:00F8H         PUBLIC        P7
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:00D8H         PUBLIC        CCON
+  C:02AFH         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:00F0H         PUBLIC        B
+  D:00E0H         PUBLIC        ACC
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  C:02AFH         LINE#         115
+  C:02AFH         LINE#         116
+  C:02AFH         LINE#         117
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        STC15_GPIO
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0093H         PUBLIC        P0M1
+  D:0092H         PUBLIC        P1M0
+  D:0096H         PUBLIC        P2M0
+  D:0091H         PUBLIC        P1M1
+  D:0080H         PUBLIC        P0
+  D:00B2H         PUBLIC        P3M0
+  D:0095H         PUBLIC        P2M1
+  D:0090H         PUBLIC        P1
+  D:00B4H         PUBLIC        P4M0
+  D:00B1H         PUBLIC        P3M1
+  D:00A0H         PUBLIC        P2
+  D:00CAH         PUBLIC        P5M0
+  D:00B3H         PUBLIC        P4M1
+  D:00B0H         PUBLIC        P3
+  D:00CCH         PUBLIC        P6M0
+  D:00C9H         PUBLIC        P5M1
+  D:00C0H         PUBLIC        P4
+  D:00E2H         PUBLIC        P7M0
+  D:00CBH         PUBLIC        P6M1
+  D:00C8H         PUBLIC        P5
+  D:00E8H         PUBLIC        P6
+  D:00E1H         PUBLIC        P7M1
+  D:00F8H         PUBLIC        P7
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:01F7H         PUBLIC        _GPIO_PWMInit
+  D:00D8H         PUBLIC        CCON
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:00F0H         PUBLIC        B
+  D:00E0H         PUBLIC        ACC
+  C:0003H         PUBLIC        _GPIO_Inilize
+  D:00D0H         PUBLIC        PSW
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/31/2015  22:58:22  PAGE 3
+
+
+  D:0094H         PUBLIC        P0M0
+  C:0291H         SYMBOL        Com003A
+  C:0291H         SYMBOL        L?0059
+  C:0291H         SYMBOL        L?0060
+  C:0297H         SYMBOL        L?0061
+  C:029AH         SYMBOL        L?0062
+  -------         PROC          COM003A
+  -------         ENDPROC       COM003A
+  -------         PROC          _GPIO_INILIZE
+  D:0007H         SYMBOL        GPIO
+  D:0001H         SYMBOL        GPIOx
+  C:0003H         LINE#         29
+  C:0003H         LINE#         30
+  C:0003H         LINE#         31
+  C:000CH         LINE#         32
+  C:0018H         LINE#         34
+  C:001BH         LINE#         35
+  C:001BH         LINE#         36
+  C:0026H         LINE#         37
+  C:0034H         LINE#         38
+  C:0042H         LINE#         39
+  C:0050H         LINE#         40
+  C:0050H         LINE#         41
+  C:0055H         LINE#         42
+  C:0055H         LINE#         43
+  C:0063H         LINE#         44
+  C:006FH         LINE#         45
+  C:007CH         LINE#         46
+  C:008CH         LINE#         47
+  C:008CH         LINE#         48
+  C:0091H         LINE#         49
+  C:0091H         LINE#         50
+  C:009FH         LINE#         51
+  C:00ABH         LINE#         52
+  C:00B8H         LINE#         53
+  C:00C8H         LINE#         54
+  C:00C8H         LINE#         55
+  C:00CDH         LINE#         56
+  C:00CDH         LINE#         57
+  C:00DBH         LINE#         58
+  C:00E7H         LINE#         59
+  C:00F4H         LINE#         60
+  C:0104H         LINE#         61
+  C:0104H         LINE#         62
+  C:0109H         LINE#         63
+  C:0109H         LINE#         64
+  C:0117H         LINE#         65
+  C:0123H         LINE#         66
+  C:0130H         LINE#         67
+  C:0140H         LINE#         68
+  C:0140H         LINE#         69
+  C:0145H         LINE#         70
+  C:0145H         LINE#         71
+  C:0153H         LINE#         72
+  C:015FH         LINE#         73
+  C:016CH         LINE#         74
+  C:017CH         LINE#         75
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/31/2015  22:58:22  PAGE 4
+
+
+  C:017CH         LINE#         76
+  C:0181H         LINE#         77
+  C:0181H         LINE#         78
+  C:018FH         LINE#         79
+  C:019BH         LINE#         80
+  C:01A8H         LINE#         81
+  C:01B8H         LINE#         82
+  C:01B8H         LINE#         83
+  C:01BDH         LINE#         84
+  C:01BDH         LINE#         85
+  C:01CBH         LINE#         86
+  C:01D7H         LINE#         87
+  C:01E4H         LINE#         88
+  C:01F4H         LINE#         89
+  C:01F4H         LINE#         91
+  C:01F6H         LINE#         92
+  -------         ENDPROC       _GPIO_INILIZE
+  -------         PROC          _GPIO_PWMINIT
+  D:0007H         SYMBOL        GPIO_PWM
+  D:0005H         SYMBOL        PuHzOdPp
+  -------         DO            
+  D:0008H         SYMBOL        GPIO_InitStructure
+  -------         ENDDO         
+  C:01F7H         LINE#         100
+  C:01F7H         LINE#         101
+  C:01F7H         LINE#         104
+  C:020CH         LINE#         105
+  C:020CH         LINE#         106
+  C:020CH         LINE#         107
+  C:020CH         LINE#         108
+  C:020CH         LINE#         109
+  C:0211H         LINE#         110
+  C:0213H         LINE#         111
+  C:0213H         LINE#         112
+  C:0216H         LINE#         113
+  C:0216H         LINE#         114
+  C:021BH         LINE#         115
+  C:021DH         LINE#         116
+  C:021DH         LINE#         117
+  C:0220H         LINE#         118
+  C:0220H         LINE#         119
+  C:0225H         LINE#         120
+  C:0227H         LINE#         121
+  C:0227H         LINE#         122
+  C:022AH         LINE#         123
+  C:022AH         LINE#         124
+  C:022FH         LINE#         125
+  C:0231H         LINE#         126
+  C:0231H         LINE#         127
+  C:0234H         LINE#         128
+  C:0234H         LINE#         129
+  C:0239H         LINE#         130
+  C:023BH         LINE#         131
+  C:023BH         LINE#         132
+  C:023BH         LINE#         133
+  C:023BH         LINE#         134
+  C:0243H         LINE#         135
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/31/2015  22:58:22  PAGE 5
+
+
+  C:0245H         LINE#         137
+  C:0245H         LINE#         138
+  C:0248H         LINE#         139
+  C:0248H         LINE#         140
+  C:0248H         LINE#         141
+  C:024AH         LINE#         142
+  -------         ENDPROC       _GPIO_PWMINIT
+  -------         ENDMOD        STC15_GPIO
+
+  -------         MODULE        ?C?CLDPTR
+  C:024BH         PUBLIC        ?C?CLDPTR
+  -------         ENDMOD        ?C?CLDPTR
+
+  -------         MODULE        ?C?CLDOPTR
+  C:0264H         PUBLIC        ?C?CLDOPTR
+  -------         ENDMOD        ?C?CLDOPTR
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GPIO_PWMINIT?STC15_GPIO
+
+Program Size: data=11.0 xdata=0 code=689
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)

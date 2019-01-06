@@ -1,0 +1,361 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        09/13/2015  18:15:08  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\PRJSW\KEIL5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\FsBSP_Delay.obj, .\Objects\FsBSP_LedScreen.obj, .\Objec
+>> ts\FsBSP_Timer.obj, .\Objects\main.obj TO .\Objects\LedScreen_Love PRINT (.\Listings\LedScreen_Love.m51) RAMSIZE (256
+>> )
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\FsBSP_Delay.obj (FSBSP_DELAY)
+  .\Objects\FsBSP_LedScreen.obj (FSBSP_LEDSCREEN)
+  .\Objects\FsBSP_Timer.obj (FSBSP_TIMER)
+  .\Objects\main.obj (MAIN)
+  D:\PRJSW\KEIL5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\LedScreen_Love (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0008H     UNIT         ?DT?FSBSP_LEDSCREEN
+            DATA    0010H     0002H     UNIT         ?DT?FSBSP_TIMER
+            DATA    0012H     0002H     UNIT         _DATA_GROUP_
+            IDATA   0014H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0008H     UNIT         ?CO?FSBSP_LEDSCREEN
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     008CH     UNIT         ?C_C51STARTUP
+            CODE    009AH     0064H     UNIT         ?PR?TIMER0INT?FSBSP_TIMER
+            CODE    00FEH     0047H     UNIT         ?PR?LEDSCREENDIS?FSBSP_LEDSCREEN
+            CODE    0145H     003AH     UNIT         ?PR?_LEDSCREEN_WRTWOBYTE?FSBSP_LEDSCREEN
+            CODE    017FH     002DH     UNIT         ?PR?UP_MOVE_DIS?FSBSP_LEDSCREEN
+            CODE    01ACH     002DH     UNIT         ?PR?DOWN_MOVE_DIS?FSBSP_LEDSCREEN
+            CODE    01D9H     0020H     UNIT         ?PR?_DELAYMS?FSBSP_DELAY
+            CODE    01F9H     0015H     UNIT         ?PR?TIEMR0INIT?FSBSP_TIMER
+            CODE    020EH     0011H     UNIT         ?C_INITSEG
+            CODE    021FH     0005H     UNIT         ?PR?MAIN?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\LedScreen_Love (?C_STARTUP)
+
+
+SEGMENT                                            DATA_GROUP 
+  +--> CALLED SEGMENT                            START    LENGTH
+----------------------------------------------------------------
+?C_C51STARTUP                                    -----    -----
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/13/2015  18:15:08  PAGE 2
+
+
+?PR?MAIN?MAIN                                    -----    -----
+  +--> ?PR?TIEMR0INIT?FSBSP_TIMER
+
+*** NEW ROOT ***************************************************
+
+?PR?TIMER0INT?FSBSP_TIMER                        -----    -----
+  +--> ?PR?UP_MOVE_DIS?FSBSP_LEDSCREEN
+  +--> ?PR?DOWN_MOVE_DIS?FSBSP_LEDSCREEN
+
+?PR?UP_MOVE_DIS?FSBSP_LEDSCREEN                  0012H    0001H
+  +--> ?PR?LEDSCREENDIS?FSBSP_LEDSCREEN
+  +--> ?PR?_DELAYMS?FSBSP_DELAY
+
+?PR?LEDSCREENDIS?FSBSP_LEDSCREEN                 0013H    0001H
+  +--> ?PR?_LEDSCREEN_WRTWOBYTE?FSBSP_LEDSCREEN
+  +--> ?PR?_DELAYMS?FSBSP_DELAY
+
+?PR?_LEDSCREEN_WRTWOBYTE?FSBSP_LEDSCREEN         -----    -----
+  +--> ?CO?FSBSP_LEDSCREEN
+
+?PR?DOWN_MOVE_DIS?FSBSP_LEDSCREEN                0012H    0001H
+  +--> ?PR?LEDSCREENDIS?FSBSP_LEDSCREEN
+  +--> ?PR?_DELAYMS?FSBSP_DELAY
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\LedScreen_Love (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:000EH         SEGMENT       ?C_C51STARTUP
+  I:0014H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0011H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:000EH         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/13/2015  18:15:08  PAGE 3
+
+
+  C:000EH         LINE#         133
+  C:0010H         LINE#         134
+  C:0011H         LINE#         135
+  C:0012H         LINE#         136
+  C:0014H         LINE#         185
+  C:0017H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        FSBSP_DELAY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:01D9H         PUBLIC        _DelayMS
+  -------         PROC          _DELAYMS
+  D:0006H         SYMBOL        ValMS
+  -------         DO            
+  D:0004H         SYMBOL        uiVal
+  D:0002H         SYMBOL        ujVal
+  -------         ENDDO         
+  C:01D9H         LINE#         36
+  C:01D9H         LINE#         37
+  C:01D9H         LINE#         39
+  C:01E3H         LINE#         40
+  C:01F8H         LINE#         41
+  -------         ENDPROC       _DELAYMS
+  -------         ENDMOD        FSBSP_DELAY
+
+  -------         MODULE        FSBSP_LEDSCREEN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  B:00C8H.1       PUBLIC        LedSER
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  D:00C8H         PUBLIC        P5
+  D:00E8H         PUBLIC        P6
+  D:00F8H         PUBLIC        P7
+  D:00A8H         PUBLIC        IE
+  C:01ACH         PUBLIC        Down_Move_Dis
+  D:00B8H         PUBLIC        IP
+  C:00FEH         PUBLIC        LedScreenDis
+  D:00D8H         PUBLIC        CCON
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:017FH         PUBLIC        Up_Move_Dis
+  C:0003H         PUBLIC        ColArr
+  D:0008H         PUBLIC        RowArr
+  B:00C8H.2       PUBLIC        RCK
+  B:00C8H.3       PUBLIC        SCK
+  C:0153H         PUBLIC        _LedScreen_WrTwoByte
+  D:00D0H         PUBLIC        PSW
+  C:0145H         SYMBOL        L?0025
+  C:014AH         SYMBOL        L?0026
+  -------         PROC          L?0024
+  -------         ENDPROC       L?0024
+  C:0145H         SYMBOL        L?0025
+  C:014AH         SYMBOL        L?0026
+  -------         PROC          _LEDSCREEN_WRTWOBYTE
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/13/2015  18:15:08  PAGE 4
+
+
+  D:0007H         SYMBOL        SEGDat
+  D:0005H         SYMBOL        COMDat
+  -------         DO            
+  D:0006H         SYMBOL        i
+  D:0003H         SYMBOL        j
+  -------         ENDDO         
+  C:0153H         LINE#         39
+  C:0153H         LINE#         40
+  C:0153H         LINE#         41
+  C:0155H         LINE#         42
+  C:0156H         LINE#         44
+  C:0156H         LINE#         45
+  C:0156H         LINE#         46
+  C:015AH         LINE#         47
+  C:015CH         LINE#         48
+  C:0160H         LINE#         49
+  C:0162H         LINE#         50
+  C:0166H         LINE#         53
+  C:0168H         LINE#         54
+  C:0168H         LINE#         55
+  C:016CH         LINE#         56
+  C:016EH         LINE#         57
+  C:0172H         LINE#         58
+  C:0174H         LINE#         59
+  C:0178H         LINE#         61
+  C:017AH         LINE#         62
+  C:017BH         LINE#         63
+  C:017CH         LINE#         64
+  C:017EH         LINE#         65
+  -------         ENDPROC       _LEDSCREEN_WRTWOBYTE
+  -------         PROC          LEDSCREENDIS
+  -------         DO            
+  D:0013H         SYMBOL        j
+  -------         ENDDO         
+  C:00FEH         LINE#         72
+  C:00FEH         LINE#         73
+  C:00FEH         LINE#         75
+  C:0101H         LINE#         76
+  C:0101H         LINE#         77
+  C:0104H         LINE#         78
+  C:010BH         LINE#         79
+  C:010EH         LINE#         80
+  C:0115H         LINE#         81
+  C:0118H         LINE#         82
+  C:011FH         LINE#         83
+  C:0122H         LINE#         84
+  C:0129H         LINE#         86
+  C:012CH         LINE#         87
+  C:0131H         LINE#         88
+  C:0136H         LINE#         89
+  C:013BH         LINE#         90
+  C:0144H         LINE#         91
+  -------         ENDPROC       LEDSCREENDIS
+  -------         PROC          UP_MOVE_DIS
+  -------         DO            
+  D:0012H         SYMBOL        iCtr
+  -------         ENDDO         
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/13/2015  18:15:08  PAGE 5
+
+
+  C:017FH         LINE#         98
+  C:017FH         LINE#         99
+  C:017FH         LINE#         101
+  C:0182H         LINE#         102
+  C:0182H         LINE#         103
+  C:0199H         LINE#         104
+  C:019CH         LINE#         105
+  C:01A5H         LINE#         106
+  -------         ENDPROC       UP_MOVE_DIS
+  -------         PROC          DOWN_MOVE_DIS
+  -------         DO            
+  D:0012H         SYMBOL        iCtr
+  -------         ENDDO         
+  C:01ACH         LINE#         114
+  C:01ACH         LINE#         115
+  C:01ACH         LINE#         117
+  C:01AFH         LINE#         118
+  C:01AFH         LINE#         119
+  C:01C6H         LINE#         120
+  C:01C9H         LINE#         121
+  C:01D2H         LINE#         122
+  -------         ENDPROC       DOWN_MOVE_DIS
+  -------         ENDMOD        FSBSP_LEDSCREEN
+
+  -------         MODULE        FSBSP_TIMER
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  D:00C8H         PUBLIC        P5
+  B:00A8H.7       PUBLIC        EA
+  D:00E8H         PUBLIC        P6
+  D:00F8H         PUBLIC        P7
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:00D8H         PUBLIC        CCON
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  D:008EH         PUBLIC        AUXR
+  B:00A8H.1       PUBLIC        ET0
+  B:0088H.5       PUBLIC        TF0
+  C:01F9H         PUBLIC        Tiemr0Init
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  C:009AH         PUBLIC        Timer0Int
+  D:0011H         PUBLIC        nMode
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          TIEMR0INIT
+  C:01F9H         LINE#         28
+  C:01F9H         LINE#         29
+  C:01F9H         LINE#         30
+  C:01FCH         LINE#         31
+  C:01FFH         LINE#         32
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/13/2015  18:15:08  PAGE 6
+
+
+  C:0202H         LINE#         33
+  C:0205H         LINE#         34
+  C:0207H         LINE#         35
+  C:0209H         LINE#         36
+  C:020BH         LINE#         37
+  C:020DH         LINE#         38
+  -------         ENDPROC       TIEMR0INIT
+  -------         PROC          TIMER0INT
+  -------         DO            
+  D:0010H         SYMBOL        iShift
+  -------         ENDDO         
+  C:009AH         LINE#         45
+  C:00B7H         LINE#         48
+  C:00BAH         LINE#         49
+  C:00BDH         LINE#         50
+  C:00BFH         LINE#         51
+  C:00C4H         LINE#         52
+  C:00C4H         LINE#         53
+  C:00C7H         LINE#         54
+  C:00C9H         LINE#         55
+  C:00C9H         LINE#         56
+  C:00D3H         LINE#         57
+  C:00D3H         LINE#         58
+  C:00D8H         LINE#         60
+  C:00DBH         LINE#         61
+  C:00DBH         LINE#         62
+  C:00E3H         LINE#         63
+  -------         ENDPROC       TIMER0INT
+  -------         ENDMOD        FSBSP_TIMER
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  D:00C8H         PUBLIC        P5
+  D:00E8H         PUBLIC        P6
+  D:00F8H         PUBLIC        P7
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:00D8H         PUBLIC        CCON
+  C:021FH         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  C:021FH         LINE#         29
+  C:021FH         LINE#         30
+  C:021FH         LINE#         31
+  C:0222H         LINE#         33
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+Program Size: data=21.0 xdata=0 code=548
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
